@@ -9,6 +9,9 @@
 !.config/neofetch/**
 !.config/kitty/**
 !.config/fcitx5/**
+!.config/gtk-3.0/**
+
+!.icons/**
 
 !.gitignore
 !.zshrc
