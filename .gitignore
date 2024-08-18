@@ -1,0 +1,15 @@
+*
+!*/
+
+!.config/bspwm/**
+!.config/sxhkd/**
+!.config/polybar/**
+!.config/rofi/**
+!.config/picom/**
+!.config/neofetch/**
+!.config/kitty/**
+!.config/fcitx5/**
+
+!.gitignore
+!.zshrc
+!.xsession

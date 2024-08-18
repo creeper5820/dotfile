@@ -1,0 +1,39 @@
+#! /bin/sh
+
+###### APPLICATIONS ###################################
+
+# app: curcor style
+xsetroot -cursor_name left_ptr
+# app: wallpaper
+feh --randomize --bg-fill ~/pictures/wallpaper/六花.webp
+# app: polybar
+~/.config/polybar/launch.sh --blocks
+# app: fcitx
+fcitx &
+# app: picom
+picom --daemon &
+# app: clash
+~/.app/clash/clash.sh
+#app: sxhkd
+pgrep -x sxhkd > /dev/null || sxhkd &
+
+##### CONFIGS #########################################
+
+# brief: workspaces
+bspc monitor -d 1 2 3 4 5 6 7 8 9
+# brief: some width of border or ohters
+bspc config border_width        4
+bspc config window_gap          4
+bspc config split_ratio         0.50
+bspc config borderless_monocle  true
+bspc config gapless_monocle     true
+
+bspc config pointer_modifier mod4
+bspc config pointer_action1 move
+bspc config pointer_action2 resize_side
+bspc config pointer_action2 resize_corner
+
+##### COLORS ##########################################
+
+bspc config normal_border_color     "#363636"
+bspc config focused_border_color    "#d7f7f1"
