@@ -53,4 +53,5 @@ xinput set-prop $id $property $value
 # you shoud focus these properties
 # Tapping Enabled: 单击
 # Natural Scrolling Enabled： 符合直觉的滑动
+# Accel Speed: 滑动速度
 ```
