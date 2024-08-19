@@ -1,5 +1,4 @@
-
-## basic
+## develop
 ``` bash
 # basic develop packages
 sudo apt-get install -y \
@@ -32,7 +31,7 @@ sudo apt-get install -y \
     libxrandr-dev
 ```
 
-# lock screen
+## lock screen
 ``` bash
 git clone https://git.suckless.org/slock
 cd slock
