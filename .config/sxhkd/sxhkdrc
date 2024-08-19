@@ -182,7 +182,9 @@ XF86AudioRaiseVolume
 ##### Screenshot #####
 
 Print
-	scrot ~/pictures/screenshots/$(date +%Y%m%d)$(date +%H%M%S).png
+	scrot ~/pictures/screenshots/$(date +%Y%m%d)$(date +%H%M%S).png \
+	-e 'xclip -selection clipboard -t image/png -i $f'
 
 alt + Print
-	scrot -s ~/pictures/screenshots/$(date +%Y%m%d)$(date +%H%M%S).png
+	scrot -s ~/pictures/screenshots/$(date +%Y%m%d)$(date +%H%M%S).png \
+	-e 'xclip -selection clipboard -t image/png -i $f'

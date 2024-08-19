@@ -20,6 +20,42 @@ sudo ln -s /usr/bin/clangd-20 /usr/bin/clangd
 sudo ln -s /usr/bin/clang-format-20 /usr/bin/clang-format
 ```
 
+## desktop package
+``` bash
+sudo apt-get install -y \
+    xorg dbus-x11 \
+    bspwm rofi sxhkd polybar kitty picom \
+    obs-studio \
+    ranger fcitx5 lxappearance \
+    neofetch xclip feh btop xautolock \
+    pulseaudio alsa-base brightnessctl alsamixergui \
+    libxrandr-dev
+```
+
+# lock screen
+``` bash
+git clone https://git.suckless.org/slock
+cd slock
+make all
+sudo make install
+cd .. && sudo rm -r slock
+
+# enable slock@user.service
+# /etc/systemd/system/slock@.service
+# [Unit]
+# Description=Lock X session using slock for user %i
+# Before=sleep.target
+#
+# [Service]
+# User=%i
+# Environment=DISPLAY=:0
+# ExecStartPre=/usr/bin/xset dpms force suspend
+# ExecStart=/usr/bin/slock
+#
+# [Install]
+# WantedBy=sleep.target
+```
+
 ## zsh config
 ``` bash
 # install oh my zsh & change theme to af-magic
@@ -54,4 +90,13 @@ xinput set-prop $id $property $value
 # Tapping Enabled: 单击
 # Natural Scrolling Enabled： 符合直觉的滑动
 # Accel Speed: 滑动速度
+
+# you can get the id use this
+xinput list | grep "Touchpad" | awk -F"id=" {'print substr($2,0,2)'}
+```
+
+# screenshot
+```bash
+#!/bin/sh
+scrot -e 'xclip -selection clipboard -t image/png -i $f'
 ```
