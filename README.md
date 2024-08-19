@@ -1,4 +1,4 @@
-## Note
+# Note
 Xorg 环境默认export代理端口，注意检查网络环境(.xsession)
 
 # Dependency
