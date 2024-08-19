@@ -132,136 +132,57 @@ alt + {Left,Down,Up,Right}
 
 ##### light control #####
 
-## Key_Brightness_Decrease
-XF86MonBrightnessDown
-	brightnessctl set 5%-
+# XF86MonBrightnessDown
+# 	brightnessctl set 5%-
 
-## Key_Brightness_Increase
-XF86MonBrightnessUp
-	brightnessctl set +5%
+# @note: Why my touching touchpad makes brightness increase
+# @note: ?????????????????
+# XF86MonBrightnessUp
+	# brightnessctl set +5%
 
-## Brightness_Decrease
 alt + shift + bracketleft
 	brightnessctl set 5%-
 
-## Brightness_Increase
 alt + shift + bracketright
 	brightnessctl set +5%
 
-## Brightness_Decrease_Slowly
 alt + ctrl + bracketleft
 	brightnessctl set 1%-
 
-## Brightness_Increase_Slowly
 alt + ctrl + bracketright
 	brightnessctl set +1%
 
 
 
-
-################################################################################
-### Head: Volume / Control
-##
-
-## https://wiki.archlinux.org/index.php/Xbindkeys
-## https://wiki.archlinux.org/index.php/Advanced_Linux_Sound_Architecture#Keyboard_volume_control
-## https://wiki.archlinux.org/index.php/PulseAudio#Keyboard_volume_control
-## https://zh.wikipedia.org/zh-tw/ALSA
-## https://en.wikipedia.org/wiki/Advanced_Linux_Sound_Architecture
-## https://zh.wikipedia.org/zh-tw/PulseAudio
-## https://en.wikipedia.org/wiki/PulseAudio
-
-## alsamixer (Package: alsa-utils)
-## amixer (Package: alsa-utils)
-## pactl (Package: pulseaudio-utils)
-## pavucontrol (Package: pavucontrol)
-## pavucontrol-qt (Package: pavucontrol-qt)
-## mate-volume-control (Package: mate-media)
-
-
-##
-## ##  VolumeControl
-## `Alt + Shift + v`
-##
+#####  VolumeControl #####
 alt + shift + v
 	mate-volume-control
-	#pavucontrol
-	#pavucontrol-qt
 
-
-# https://askubuntu.com/questions/65764/how-do-i-toggle-sound-with-amixer
-# https://wiki.archlinux.org/index.php/PulseAudio#volume_control
-# amixer set Master toggle
-# amixer -D pulse set Master 1+ toggle
-# https://askubuntu.com/questions/872014/mute-button-doesnt-unmute
-##
-## ## VolumeDecrease
-## `Alt + Shift + comma`
-##
 alt + shift + comma
 	amixer -q -D pulse sset Master 5%- unmute
-##
-## ## VolumeIncrease
-## `Alt + Shift + period`
-##
+
 alt + shift + period
 	amixer -q -D pulse sset Master 5%+ unmute
-##
-## ## VolumeDecreaseSlowly
-## `Alt + Ctrl + comma`
-##
+
 alt + ctrl + comma
 	amixer -q -D pulse sset Master 1%- unmute
-##
-## ## VolumeIncreaseSlowly
-## `Alt + Ctrl + period`
-##
+
 alt + ctrl + period
 	amixer -q -D pulse sset Master 1%+ unmute
-##
-## ## VolumeToggleMute
-## `XF86AudioMute`
-##
+
 XF86AudioMute
 	amixer -q -D pulse sset Master toggle
-##
-## ## VolumeDecrease
-## `XF86AudioLowerVolume`
-##
+
 XF86AudioLowerVolume
 	amixer -q -D pulse sset Master 5%- unmute
-##
-## ## VolumeIncrease
-## `XF86AudioRaiseVolume`
-##
+
 XF86AudioRaiseVolume
 	amixer -q -D pulse sset Master 5%+ unmute
-##
-## collision occurs on bash emacs mode
-## * `Alt + ,`
-## * `Alt + .`
-## * http://manpages.ubuntu.com/manpages/bionic/en/man3/readline.3readline.html#default%20key%20bindings
-## * http://manpages.ubuntu.com/manpages/bionic/en/man1/bash.1.html#readline
-##
-##
-### Tail: Volume / Control
-################################################################################
 
-################################################################################
-### Head: Screenshot / Control
-##
-##
-## ## Screenshot
-## `Print`
-##
+##### Screenshot #####
+
 Print
 	scrot ~/pictures/screenshots/$(date +%Y%m%d)$(date +%H%M%S).png
-##
-## ## Screenshot Selected Area
-## `Alt + Print`
-##
+
 alt + Print
 	scrot -s ~/pictures/screenshots/$(date +%Y%m%d)$(date +%H%M%S).png
-##
-### Tail: Screenshot / Control
-################################################################################
