@@ -136,6 +136,6 @@ sudo systemctl show --property=Environment docker
 ```bash
 # this disable the appearance of "docker0"
 # you can `ifconfig` to check this
-echo "{\n  "bridge": "none"\n}" | sudo tee -a /etc/docker/daemon.json
+echo "{\n  \"bridge\": \"none\"\n}" | sudo tee -a /etc/docker/daemon.json
 sudo systemctl restart docker
 ```
