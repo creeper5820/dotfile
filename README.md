@@ -6,8 +6,7 @@ Xorg 环境默认export代理端口，注意检查网络环境(.xsession)
 ``` bash
 # basic develop packages
 sudo apt-get install -y \
-    build-essential \
-    lsb-release gnupg software-properties-common \
+    build-essential lsb-release gnupg software-properties-common \
     wget curl unzip git zsh \
     gcc g++ gdb make cmake \
     gcc-arm-none-eabi
@@ -30,7 +29,7 @@ sudo apt-get install -y \
     bspwm rofi sxhkd polybar kitty picom \
     obs-studio \
     ranger fcitx5 lxappearance \
-    neofetch xclip feh btop xautolock \
+    neofetch xclip feh btop xautolock net-tools \
     pulseaudio alsa-base brightnessctl alsamixergui \
     libxrandr-dev
 ```
@@ -98,8 +97,45 @@ xinput set-prop $id $property $value
 xinput list | grep "Touchpad" | awk -F"id=" {'print substr($2,0,2)'}
 ```
 
-# screenshot
+## screenshot
 ```bash
 #!/bin/sh
 scrot -e 'xclip -selection clipboard -t image/png -i $f'
+```
+
+## docker
+run docker without sudo
+```bash
+sudo groupadd docker
+sudo usermod -aG docker $USER
+newgrp docker
+sudo chown "$USER":"$USER" /home/"$USER"/.docker -R
+sudo chmod g+rwx "$HOME/.docker" -R
+```
+
+set proxy for docker pulling
+```bash
+sudo mkdir -p /etc/systemd/system/docker.service.d
+sudo vim /etc/systemd/system/docker.service.d/http-proxy.conf
+
+# input these
+# [Service]
+# Environment="HTTP_PROXY=http://127.0.0.1:7890"
+# Environment="HTTPS_PROXY=http://127.0.0.1:7890"
+
+# and then
+sudo systemctl daemon-reload
+sudo systemctl restart docker
+
+# you can check
+sudo systemctl show --property=Environment docker
+```
+
+## fuck qq login in linux with docker
+
+```bash
+# this disable the appearance of "docker0"
+# you can `ifconfig` to check this
+echo "{\n  "bridge": "none"\n}" | sudo tee -a /etc/docker/daemon.json
+sudo systemctl restart docker
 ```

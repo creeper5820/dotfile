@@ -12,6 +12,7 @@
 !.config/gtk-3.0/**
 
 !.icons/**
+!.app/**
 
 !.gitignore
 !.zshrc
