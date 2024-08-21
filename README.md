@@ -139,3 +139,15 @@ sudo systemctl show --property=Environment docker
 echo "{\n  \"bridge\": \"none\"\n}" | sudo tee -a /etc/docker/daemon.json
 sudo systemctl restart docker
 ```
+
+## qt installation
+
+```bash
+sudo apt-get install -y \
+qtbase5-dev \
+qt5-qmake \
+qtcreator \
+qttools5-dev-tools
+
+sudo apt install libqt5opengl5-dev
+```
