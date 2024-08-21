@@ -1,8 +1,8 @@
 # Note
 Xorg 环境默认export代理端口，注意检查网络环境(.xsession)
 
-# Dependency
-## develop
+# Develop
+## packages
 ``` bash
 # basic develop packages
 sudo apt-get install -y \
@@ -22,7 +22,57 @@ sudo ln -s /usr/bin/clangd-20 /usr/bin/clangd
 sudo ln -s /usr/bin/clang-format-20 /usr/bin/clang-format
 ```
 
-## desktop package
+## zsh config
+``` bash
+# install oh my zsh & change theme to af-magic
+sh -c "$(wget https://gitee.com/Devkings/oh_my_zsh_install/raw/master/install.sh -O -)" && \
+sed -i 's/ZSH_THEME=\"[a-z0-9\-]*\"/ZSH_THEME="af-magic"/g' ~/.zshrc && \
+chsh -s /bin/zsh && \
+source ~/.zshrc
+```
+
+## docker
+run docker without sudo
+```bash
+sudo groupadd docker
+sudo usermod -aG docker $USER
+newgrp docker
+sudo chown "$USER":"$USER" /home/"$USER"/.docker -R
+sudo chmod g+rwx "$HOME/.docker" -R
+```
+
+set proxy for docker pulling
+```bash
+sudo mkdir -p /etc/systemd/system/docker.service.d
+sudo vim /etc/systemd/system/docker.service.d/http-proxy.conf
+
+# input these
+# [Service]
+# Environment="HTTP_PROXY=http://127.0.0.1:7890"
+# Environment="HTTPS_PROXY=http://127.0.0.1:7890"
+
+# and then
+sudo systemctl daemon-reload
+sudo systemctl restart docker
+
+# you can check
+sudo systemctl show --property=Environment docker
+```
+
+## qt installation
+
+```bash
+sudo apt-get install -y \
+qtbase5-dev \
+qt5-qmake \
+qtcreator \
+qttools5-dev-tools
+
+sudo apt install libqt5opengl5-dev
+```
+
+# Desktop
+## packages
 ``` bash
 sudo apt-get install -y \
     xorg dbus-x11 \
@@ -56,15 +106,6 @@ cd .. && sudo rm -r slock
 #
 # [Install]
 # WantedBy=sleep.target
-```
-
-## zsh config
-``` bash
-# install oh my zsh & change theme to af-magic
-sh -c "$(wget https://gitee.com/Devkings/oh_my_zsh_install/raw/master/install.sh -O -)" && \
-sed -i 's/ZSH_THEME=\"[a-z0-9\-]*\"/ZSH_THEME="af-magic"/g' ~/.zshrc && \
-chsh -s /bin/zsh && \
-source ~/.zshrc
 ```
 
 ## fcitx5 theme
@@ -103,34 +144,6 @@ xinput list | grep "Touchpad" | awk -F"id=" {'print substr($2,0,2)'}
 scrot -e 'xclip -selection clipboard -t image/png -i $f'
 ```
 
-## docker
-run docker without sudo
-```bash
-sudo groupadd docker
-sudo usermod -aG docker $USER
-newgrp docker
-sudo chown "$USER":"$USER" /home/"$USER"/.docker -R
-sudo chmod g+rwx "$HOME/.docker" -R
-```
-
-set proxy for docker pulling
-```bash
-sudo mkdir -p /etc/systemd/system/docker.service.d
-sudo vim /etc/systemd/system/docker.service.d/http-proxy.conf
-
-# input these
-# [Service]
-# Environment="HTTP_PROXY=http://127.0.0.1:7890"
-# Environment="HTTPS_PROXY=http://127.0.0.1:7890"
-
-# and then
-sudo systemctl daemon-reload
-sudo systemctl restart docker
-
-# you can check
-sudo systemctl show --property=Environment docker
-```
-
 ## fuck qq login in linux with docker
 
 ```bash
@@ -139,15 +152,22 @@ sudo systemctl show --property=Environment docker
 echo "{\n  \"bridge\": \"none\"\n}" | sudo tee -a /etc/docker/daemon.json
 sudo systemctl restart docker
 ```
-
-## qt installation
-
+## more amazing picom
 ```bash
 sudo apt-get install -y \
-qtbase5-dev \
-qt5-qmake \
-qtcreator \
-qttools5-dev-tools
+libconfig-dev libdbus-1-dev libegl-dev libev-dev libgl-dev libepoxy-dev \
+libpcre2-dev libpixman-1-dev libx11-xcb-dev libxcb1-dev libxcb-composite0-dev \
+libxcb-damage0-dev libxcb-dpms0-dev libxcb-glx0-dev libxcb-image0-dev \
+libxcb-present-dev libxcb-randr0-dev libxcb-render0-dev libxcb-render-util0-dev \
+libxcb-shape0-dev libxcb-util-dev libxcb-xfixes0-dev libxext-dev meson \
+ninja-build uthash-dev
 
-sudo apt install libqt5opengl5-dev
+git clone https://github.com/FT-Labs/picom.git
+cd picom
+meson setup --buildtype=release build
+ninja -C build
+
+mkdir -p ~/.app/picom
+meson configure -Dprefix=~/.app/picom/ build
+ninja -C build install
 ```
