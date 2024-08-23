@@ -131,8 +131,11 @@ xinput set-prop $id $property $value
 
 # you shoud focus these properties
 # Tapping Enabled: 单击
+xinput set-prop $id "libinput Tapping Enabled" 1
 # Natural Scrolling Enabled： 符合直觉的滑动
+xinput set-prop $id "libinput Natural Scrolling Enabled" 1
 # Accel Speed: 滑动速度
+xinput set-prop $id "libinput Accel Speed" 0.1
 
 # you can get the id use this
 xinput list | grep "Touchpad" | awk -F"id=" {'print substr($2,0,2)'}

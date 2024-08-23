@@ -5,9 +5,9 @@ export no_proxy="localhost,127.0.0.1,::1"
 
 # configure touchpad
 touchpad=`xinput list | grep "Touchpad" | awk -F"id=" {'print substr($2,0,2)'}`
-xinput set-prop $touchpad 293 0.1
-xinput set-prop $touchpad 279 1
-xinput set-prop $touchpad 302 1
+xinput set-prop $touchpad "libinput Tapping Enabled" 1
+xinput set-prop $touchpad "libinput Natural Scrolling Enabled" 1
+xinput set-prop $touchpad "libinput Accel Speed" 0.1
 
 # app: sxhkd
 # fun: handle all keys
