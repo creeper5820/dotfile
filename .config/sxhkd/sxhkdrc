@@ -3,19 +3,19 @@
 #
 
 # terminal emulator
-alt + Return
+super + Return
 	kitty
 
 # program launcher
-alt + d
+super + d
 	rofi -show drun
 
 # make sxhkd reload its configuration files:
-alt + Escape
+super + Escape
 	pkill -USR1 -x sxhkd
 
 # open the system menu
-alt + p
+super + p
 	~/.config/polybar/blocks/scripts/powermenu.sh &
 
 #
@@ -23,23 +23,23 @@ alt + p
 #
 
 # quit/restart bspwm
-alt + shift + {q,r}
+super + shift + {q,r}
 	bspc {quit,wm -r}
 
 # close and kill
-alt + {_,shift + }w
+super + {_,shift + }w
 	bspc node -{c,k}
 
 # alternate between the tiled and monocle layout
-alt + m
+super + m
 	bspc desktop -l next
 
 # send the newest marked node to the newest preselected node
-alt + y
+super + y
 	bspc node newest.marked.local -n newest.!automatic.local
 
 # swap the current node and the biggest window
-alt + g
+super + g
 	bspc node -s biggest.window
 
 #
@@ -47,11 +47,11 @@ alt + g
 #
 
 # set the window state
-alt + {t,shift + t,s,f}
+super + {t,shift + t,s,f}
 	bspc node -t {tiled,pseudo_tiled,floating,fullscreen}
 
 # set the node flags
-alt + ctrl + {m,x,y,z}
+super + ctrl + {m,x,y,z}
 	bspc node -g {marked,locked,sticky,private}
 
 #
@@ -59,35 +59,35 @@ alt + ctrl + {m,x,y,z}
 #
 
 # focus the node in the given direction
-alt + {_,shift + }{h,j,k,l}
+super + {_,shift + }{h,j,k,l}
 	bspc node -{f,s} {west,south,north,east}
-alt + {_,shift + }{Left,Down,Up,Right}
+super + {_,shift + }{Left,Down,Up,Right}
 	bspc node -{f,s} {west,south,north,east}
 
 # focus the node for the given path jump
-alt + {p,b,comma,period}
+super + {p,b,comma,period}
 	bspc node -f @{parent,brother,first,second}
 
 # focus the next/previous window in the current desktop
-alt + {_,shift + }c
+super + {_,shift + }c
 	bspc node -f {next,prev}.local.!hidden.window
 
 # focus the next/previous desktop in the current monitor
-alt + bracket{left,right}
+super + bracket{left,right}
 	bspc desktop -f {prev,next}.local
 
 # focus the last node/desktop
-alt + {grave,Tab}
+super + {grave,Tab}
 	bspc {node,desktop} -f last
 
 # focus the older or newer node in the focus history
-alt + {o,i}
+super + {o,i}
 	bspc wm -h off; \
 	bspc node {older,newer} -f; \
 	bspc wm -h on
 
 # focus or send to the given desktop
-alt + {_,shift + }{1-9,0}
+super + {_,shift + }{1-9,0}
 	bspc {desktop -f,node -d} '^{1-9,10}'
 
 #
@@ -115,19 +115,19 @@ alt + {_,shift + }{1-9,0}
 #
 
 # expand a window by moving one of its side outward
-alt + ctrl + {h,j,k,l}
+super + ctrl + {h,j,k,l}
 	bspc node -z {left -20 0,bottom 0 20,top 0 -20,right 20 0}
-alt + ctrl + {Left,Down,Up,Right}
+super + ctrl + {Left,Down,Up,Right}
 	bspc node -z {left -20 0,bottom 0 20,top 0 -20,right 20 0}
 
 # contract a window by moving one of its side inward
-alt + ctrl + shift + {h,j,k,l}
+super + ctrl + shift + {h,j,k,l}
 	bspc node -z {right -20 0,top 0 20,bottom 0 -20,left 20 0}
-alt + ctrl + shift + {Left,Down,Up,Right}
+super + ctrl + shift + {Left,Down,Up,Right}
 	bspc node -z {right -20 0,top 0 20,bottom 0 -20,left 20 0}
 	
 # move a floating window
-alt + {Left,Down,Up,Right}
+super + {Left,Down,Up,Right}
 	bspc node -v {-20 0,0 20,0 -20,20 0}
 
 ##### light control #####
@@ -140,34 +140,34 @@ alt + {Left,Down,Up,Right}
 # XF86MonBrightnessUp
 	# brightnessctl set +5%
 
-alt + shift + bracketleft
+super + shift + bracketleft
 	brightnessctl set 5%-
 
-alt + shift + bracketright
+super + shift + bracketright
 	brightnessctl set +5%
 
-alt + ctrl + bracketleft
+super + ctrl + bracketleft
 	brightnessctl set 1%-
 
-alt + ctrl + bracketright
+super + ctrl + bracketright
 	brightnessctl set +1%
 
 
 
 #####  VolumeControl #####
-alt + shift + v
+super + shift + v
 	mate-volume-control
 
-alt + shift + comma
+super + shift + comma
 	amixer -q -D pulse sset Master 5%- unmute
 
-alt + shift + period
+super + shift + period
 	amixer -q -D pulse sset Master 5%+ unmute
 
-alt + ctrl + comma
+super + ctrl + comma
 	amixer -q -D pulse sset Master 1%- unmute
 
-alt + ctrl + period
+super + ctrl + period
 	amixer -q -D pulse sset Master 1%+ unmute
 
 XF86AudioMute
@@ -185,6 +185,6 @@ Print
 	scrot ~/pictures/screenshots/$(date +%Y%m%d)$(date +%H%M%S).png \
 	-e 'xclip -selection clipboard -t image/png -i $f'
 
-alt + Print
+super + Print
 	scrot -s ~/pictures/screenshots/$(date +%Y%m%d)$(date +%H%M%S).png \
 	-e 'xclip -selection clipboard -t image/png -i $f'

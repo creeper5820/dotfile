@@ -68,7 +68,18 @@ qt5-qmake \
 qtcreator \
 qttools5-dev-tools
 
+# for pcl visualizer
 sudo apt install libqt5opengl5-dev
+
+# for qml live
+sudo apt-get install qtdeclarative5-private-dev
+sudo apt-get install qtbase5-private-dev
+
+git clone http://code.qt.io/qt-apps/qmllive.git
+cd qmllive
+git checkout 5.15
+qmake && make
+sudo make install
 ```
 
 # Desktop
