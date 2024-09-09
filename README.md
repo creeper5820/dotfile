@@ -17,7 +17,7 @@ sudo touch /etc/apt/sources.list.d/llvm-apt.list
 echo "deb https://mirrors.tuna.tsinghua.edu.cn/llvm-apt/`lsb_release -cs`/ llvm-toolchain-`lsb_release -cs` main" | sudo tee -a  /etc/apt/sources.list.d/llvm-apt.list
 sudo apt-get update -y
 # choose the latest one
-sudo apt-get install -r clangd-20 clang-format-20
+sudo apt-get install -y clangd-20 clang-format-20
 sudo ln -s /usr/bin/clangd-20 /usr/bin/clangd
 sudo ln -s /usr/bin/clang-format-20 /usr/bin/clang-format
 ```
