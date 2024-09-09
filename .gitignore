@@ -11,6 +11,8 @@
 !.config/fcitx5/**
 !.config/gtk-3.0/**
 
+!.local/share/rofi/**
+
 !.icons/**
 !.app/**
 
