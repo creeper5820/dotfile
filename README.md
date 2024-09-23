@@ -165,6 +165,12 @@ scrot -e 'xclip -selection clipboard -t image/png -i $f'
 # you can `ifconfig` to check this
 echo "{\n  \"bridge\": \"none\"\n}" | sudo tee -a /etc/docker/daemon.json
 sudo systemctl restart docker
+
+# cancel it
+sudo mv /etc/docker/daemon.json /etc/docker/daemon.json.bak
+
+# cancel your cancel
+sudo mv /etc/docker/daemon.json.bak /etc/docker/daemon.json
 ```
 ## more amazing picom
 ```bash

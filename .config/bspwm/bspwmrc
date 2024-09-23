@@ -5,7 +5,7 @@
 # app: curcor style
 xsetroot -cursor_name left_ptr
 # app: wallpaper
-feh --randomize --bg-fill ~/pictures/wallpaper/六花.webp
+feh --randomize --bg-fill ~/pictures/wallpaper/1.jpeg
 # app: polybar
 ~/.config/polybar/launch.sh --blocks
 # app: fcitx
