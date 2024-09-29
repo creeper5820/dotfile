@@ -13,6 +13,8 @@
 
 !.local/share/rofi/**
 
+!.script/**
+
 !.icons/**
 !.app/**
 
