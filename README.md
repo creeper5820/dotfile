@@ -43,19 +43,19 @@ sudo chmod g+rwx "$HOME/.docker" -R
 
 set proxy for docker pulling
 ```bash
-sudo mkdir -p /etc/systemd/system/docker.service.d
-sudo vim /etc/systemd/system/docker.service.d/http-proxy.conf
+sudo mkdir -p /etc/systemd/system/docker.service.d 
 
-# input these
-# [Service]
-# Environment="HTTP_PROXY=http://127.0.0.1:7890"
-# Environment="HTTPS_PROXY=http://127.0.0.1:7890"
+sudo touch /etc/systemd/system/docker.service.d/http-proxy.conf
 
-# and then
+echo -e "[Service]\nEnvironment="HTTP_PROXY=http://127.0.0.1:7890"\n\
+Environment="HTTPS_PROXY=http://127.0.0.1:7890"" |\
+sudo tee -a touch /etc/systemd/system/docker.service.d/http-proxy.conf
+
 sudo systemctl daemon-reload
 sudo systemctl restart docker
 
 # you can check
+echo "DOCKER ENV"
 sudo systemctl show --property=Environment docker
 ```
 
