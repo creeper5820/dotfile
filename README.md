@@ -150,6 +150,8 @@ xinput set-prop $id "libinput Accel Speed" 0.1
 
 # you can get the id use this
 xinput list | grep "Touchpad" | awk -F"id=" {'print substr($2,0,2)'}
+
+# on thinkpad t480, the touchpad is named with "Synaptics"
 ```
 
 ## screenshot

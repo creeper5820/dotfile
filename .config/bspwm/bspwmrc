@@ -20,8 +20,12 @@ pgrep -x sxhkd > /dev/null || sxhkd &
 ##### CONFIGS #########################################
 
 # brief: workspaces
-bspc monitor HDMI-0 -d 1 2 3 4 5
-bspc monitor DP-2 -d 6 7 8 9 0
+bspc monitor -d 1 2 3 4 5 6 7 8 9
+
+# if you have more than one monitor
+# bspc monitor HDMI-0 -d 1 2 3 4 5
+# bspc monitor DP-2 -d 6 7 8 9 0
+
 # brief: some width of border or ohters
 bspc config border_width        2
 bspc config window_gap          4
