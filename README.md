@@ -49,7 +49,7 @@ sudo touch /etc/systemd/system/docker.service.d/http-proxy.conf
 
 echo -e "[Service]\nEnvironment="HTTP_PROXY=http://127.0.0.1:7890"\n\
 Environment="HTTPS_PROXY=http://127.0.0.1:7890"" |\
-sudo tee -a touch /etc/systemd/system/docker.service.d/http-proxy.conf
+sudo tee -a /etc/systemd/system/docker.service.d/http-proxy.conf
 
 sudo systemctl daemon-reload
 sudo systemctl restart docker
