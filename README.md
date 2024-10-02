@@ -25,10 +25,18 @@ sudo ln -s /usr/bin/clang-format-20 /usr/bin/clang-format
 ## zsh config
 ``` bash
 # install oh my zsh & change theme to af-magic
-sh -c "$(wget https://gitee.com/Devkings/oh_my_zsh_install/raw/master/install.sh -O -)" && \
-sed -i 's/ZSH_THEME=\"[a-z0-9\-]*\"/ZSH_THEME="af-magic"/g' ~/.zshrc && \
-chsh -s /bin/zsh && \
+sh -c "$(wget https://gitee.com/Devkings/oh_my_zsh_install/raw/master/install.sh -O -)"
+
+sed -i 's/ZSH_THEME=\"[a-z0-9\-]*\"/ZSH_THEME="af-magic"/g' ~/.zshrc
+echo "setopt nonomatch" >> ~/.zshrc
+
+chsh -s /bin/zsh
 source ~/.zshrc
+
+# if use ros2
+source /opt/ros/humble/setup.zsh
+eval "$(register-python-argcomplete3 ros2)"
+eval "$(register-python-argcomplete3 colcon)"
 ```
 
 ## docker
