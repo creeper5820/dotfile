@@ -7,6 +7,8 @@ export no_proxy="localhost,127.0.0.1,::1"
 # xrandr -q | grep " connected" | cut -d ' ' -f1 | grep 'HDMI'
 xrandr --output HDMI-0 --mode 1920x1080 --rate 165 --left-of DP-2
 
+brightnessctl set 80%
+
 # configure touchpad
 touchpad=`xinput list | grep "Touchpad" | awk -F"id=" {'print substr($2,0,2)'}`
 xinput set-prop $touchpad "libinput Tapping Enabled" 1
