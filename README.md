@@ -90,6 +90,77 @@ qmake && make
 sudo make install
 ```
 
+## ESP32 Arduino on PlatformIO with clangd
+说实话，嵌入式可是最纯正的一条C系命途，不兼容clangd真是违逆天理，不但如此，还和微软的插件相互勾结，具为一丘之貉
+
+但说到底它终究脱离不了C的体系，纵使包裹了一层Arduino的面纱
+
+微软维护的Arduino插件已经无了，Arduino IDE现在还很神经，只能期望使用PlatformIO来管理Arduino项目，先前折腾ESP32 IDF框架时发现了适用于IDF的LLVM-Project，我想这是不是而也同样运用于PlatformIO上，毕竟工具链还是那一套，只是裹上了一层Arduino
+
+### 首先，你要把compile_commands.json弄出来
+把这一句添加进项目的 `platformio.ini` 中
+
+```
+extra_scripts = pre:extra_script.py
+```
+然后在更目录新建一个文件 `extra_script.py`，将下面的内容复制进去
+```py
+import os
+Import("env")
+
+# include toolchain paths
+env.Replace(COMPILATIONDB_INCLUDE_TOOLCHAIN=True)
+
+# override compilation DB path
+env.Replace(COMPILATIONDB_PATH=os.path.join("$BUILD_DIR", "compile_commands.json"))
+```
+然后在你的项目根目录下的终端执行（上面这一驼好像不是必要的，只是设置一些环境变量，有待查验，[这是依据](https://github.com/platformio/platformio-core/issues/4092)）
+
+`pio`是 platformio 的工具，你很可能在环境变量中找不到它，你可以手动把他暴露出来，这是我的路径：`pio: /home/creeper/.platformio/penv/bin/pio`，它随 platformio 的 vscode 插件一并安装好了，也可以自己去找官方文档下载一个，apt仓库大抵是没有这个的
+```bash
+pio run -t compiledb
+```
+之后便可以在这个目录下找到： `.pio/build/esp32dev/compile_commands.json`，把它拉到根目录，或者指定一下 `clangd` 的检索目录
+
+### 编译一份特化的clangd
+（MD，边编译边写文档卡死我了，全核编译太狠了）
+
+没错，原版llvm是不适配ESP32项目的，你需要下载一份修改过的LLVM源码自己编译安装才可以使用
+
+[这里是ESP32-LLVM的仓库](https://github.com/espressif/llvm-project)
+
+找你个你喜欢的地方，把一整个项目clone下来，说实话还挺大的，然后进入到项目根目录，使用下面的指令编译你需要的**clangd**
+```bash
+mkdir build && cd build  
+cmake -G Ninja -DCMAKE_BUILD_TYPE=Release -DLLVM_ENABLE_PROJECTS='clang;clang-tools-extra' ../llvm
+cmake --build . --target clangd
+```
+之后是漫长的等待，我第一次编译时把全家桶都编译了，近一个小时的电脑CPU使用权被强制剥夺
+
+编译完了后你可以在根目录下的bin目录找到可执行文件`clangd`和一些必要的工具链，找到vscode中clangd的配置文件，把clangd的路径设置为你刚编译好的`clangd`即可，我的是这样子的：
+```
+/home/creeper/llvm-project/build/bin/clangd
+```
+
+不建议将`clangd`链接到环境中，毕竟这个是esp32项目only的，其他的cpp项目还是用最新的正版clangd吧！
+
+### 写一点配置文件
+编译好后还是不能直接使用，你需要写一点配置文件，这些都放在项目根目录就行
+
+这是 `.clang-format`，代码格式化需要用到的，不是必须
+```.clang-format
+Language: Cpp
+BasedOnStyle: WebKit
+BreakBeforeBraces: Attach
+```
+这是`.clangd`，配置语言服务器clangd的，必要，因为有一些`clangd`无法识别的编译flag
+```.clangd
+CompileFlags:
+  Remove: [-m*, -f*]
+```
+
+但做完以上步骤，你可能还会遇到一些问题，比如：[Error typedef redefinition](https://forum.arduino.cc/t/error-typedef-redefinition/973743/3)，[Errors with clangd LSP server when using generated compile_commands.json](https://github.com/platformio/platformio-core/issues/4092)，但大部分的功能已经完备，你只需要忍受一点点奇怪的报错提示，或者，你有代码洁癖，那便试试解决他们吧！
+
 # Desktop
 ## packages
 ``` bash
