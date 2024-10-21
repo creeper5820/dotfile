@@ -97,6 +97,10 @@ sudo make install
 
 微软维护的Arduino插件已经无了，Arduino IDE现在还很神经，只能期望使用PlatformIO来管理Arduino项目，先前折腾ESP32 IDF框架时发现了适用于IDF的LLVM-Project，我想这是不是而也同样运用于PlatformIO上，毕竟工具链还是那一套，只是裹上了一层Arduino
 
+至于我为什么不使用`ESP32-IDF`框架，我只能说这个框架实在是有点不合我意，不如使用简单易懂的Arduino来开发，暂时放置一下大脑，享受一下在单片机平台使劲用各种标准库，哪管它什么都没写便占了一半Flash
+
+这是在STM32不曾感受过的开发体验！
+
 ### 首先，你要把compile_commands.json弄出来
 把这一句添加进项目的 `platformio.ini` 中
 
@@ -116,11 +120,17 @@ env.Replace(COMPILATIONDB_PATH=os.path.join("$BUILD_DIR", "compile_commands.json
 ```
 然后在你的项目根目录下的终端执行（上面这一驼好像不是必要的，只是设置一些环境变量，有待查验，[这是依据](https://github.com/platformio/platformio-core/issues/4092)）
 
-`pio`是 platformio 的工具，你很可能在环境变量中找不到它，你可以手动把他暴露出来，这是我的路径：`pio: /home/creeper/.platformio/penv/bin/pio`，它随 platformio 的 vscode 插件一并安装好了，也可以自己去找官方文档下载一个，apt仓库大抵是没有这个的
 ```bash
 pio run -t compiledb
 ```
-之后便可以在这个目录下找到： `.pio/build/esp32dev/compile_commands.json`，把它拉到根目录，或者指定一下 `clangd` 的检索目录
+
+`pio`是 platformio 的工具，你很可能在环境变量中找不到它，你可以手动把他暴露出来，这是我的路径：
+```
+pio: /home/creeper/.platformio/penv/bin/pio
+```
+它随 platformio 的 vscode 插件一并安装好了，也可以自己去找官方文档下载一个，apt仓库大抵是没有这个的
+
+运行上面指令后之后便可以在这个目录下找到： `.pio/build/esp32dev/compile_commands.json`，把它拉到根目录，或者指定一下 `clangd` 的检索目录
 
 ### 编译一份特化的clangd
 （MD，边编译边写文档卡死我了，全核编译太狠了）
