@@ -1,6 +1,6 @@
 #!/bin/bash
 
-sudo apt-get install -y gnupg wget sudo
+sudo apt-get install -y gnupg wget
 
 wget -O /tmp/llvm-snapshot.gpg.key https://apt.llvm.org/llvm-snapshot.gpg.key
 sudo apt-key add /tmp/llvm-snapshot.gpg.key

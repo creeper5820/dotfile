@@ -1,0 +1,1 @@
+arduino-cli compile --only-compilation-database --build-path ./build -b esp32:esp32:esp32
