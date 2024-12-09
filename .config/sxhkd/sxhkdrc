@@ -4,7 +4,7 @@
 
 # terminal emulator
 super + Return
-	kitty
+	~/.local/kitty.app/bin/kitty
 
 # program launcher
 super + d
@@ -23,7 +23,7 @@ super + p
 #
 
 # quit/restart bspwm
-super + shift + {q,r}
+super + ctrl + shift + {q,r}
 	bspc {quit,wm -r}
 
 # close and kill
@@ -53,7 +53,14 @@ super + {t,shift + t,s,f}
 # set the node flags
 super + ctrl + {m,x,y,z}
 	bspc node -g {marked,locked,sticky,private}
+	
+# hide window
+super + v
+    bspc node -g hidden
 
+# unhide window
+super + shift + v
+    bspc node {,$(bspc query -N -n .hidden | tail -n1)} -g hidden=off
 #
 # focus/swap
 #
@@ -90,6 +97,18 @@ super + {o,i}
 super + {_,shift + }{1-9,0}
 	bspc {desktop -f,node -d} '^{1-9,10}'
 
+# rotate the parent of current focused
+super  + r
+    bspc node @parent -R 90
+
+# focus a floating window from a tiled window
+super + a
+    if [ "$(bspc query -N -n focused.floating)" ]; then \
+        bspc node -f last.tiled.local; \
+    else \
+        bspc node -f last.floating.local; \
+    fi
+	
 #
 # preselect
 #

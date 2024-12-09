@@ -1,5 +1,3 @@
-shell zsh
-
 map ctrl+d launch --location=hsplit
 map ctrl+r launch --location=vsplit
 map Ctrl+W close_window
@@ -12,21 +10,14 @@ bold_italic_font auto
 
 font_size 12
 
-background_opacity 0.9
+# Background
+# background #282c34
 
 # Animation
 cursor_trail 1
 cursor_trail_decay 0.1 0.4
 
-cursor_shape block
-cursor_shape_unfocused beam
-shell_integration  no-cursor
-
-cursor_blink_interval -1
-
-enable_audio_bell no
-allow_remote_control yes
-
+# BEGIN_KITTY_THEME
+# Atelier Cave Dark
 include current-theme.conf
-
-window_padding_width 5
+# END_KITTY_THEME
