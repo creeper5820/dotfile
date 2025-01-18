@@ -12,6 +12,7 @@ feh --randomize --bg-fill ~/pictures/wallpaper/1.jpeg
 fcitx &
 # app: picom
 ~/.app/picom/bin/picom --daemon &
+# /usr/local/bin/picom --daemon &
 # app: clash
 ~/.app/clash/clash.sh
 #app: sxhkd
@@ -27,7 +28,7 @@ bspc monitor HDMI-0 -d 1 2 3 4 5
 bspc monitor DP-2 -d 6 7 8 9 0
 
 # brief: some width of border or ohters
-bspc config border_width        2
+bspc config border_width        1
 bspc config window_gap          4
 bspc config split_ratio         0.50
 bspc config borderless_monocle  true
