@@ -19,5 +19,6 @@ vim.api.nvim_set_keymap("i", "<C-Del>", "<C-o>dw", { noremap = true, silent = tr
 
 -- exit terminal mode
 vim.api.nvim_set_keymap("t", "<C-[>", "<C-\\><C-n>", { noremap = true })
+
 -- open zsh in new terminal tab
-vim.api.nvim_set_keymap("n", "<Leader>tz", ":vnew | terminal zsh<CR>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "<Leader>tz", ":terminal zsh<CR>", { noremap = true, silent = true })

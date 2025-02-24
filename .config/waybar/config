@@ -1,0 +1,163 @@
+{
+    "layer": "bottom",
+    "position": "bottom",
+    "mod": "dock",
+    "exclusive": true,
+    "gtk-layer-shell": true,
+    "margin-bottom": -1,
+    "passthrough": false,
+    "height": 40,
+    "modules-left": [
+        "cpu",
+        "memory",
+        "disk",
+        "hyprland/workspaces",
+        "wlr/taskbar"
+    ],
+    "modules-center": [
+        "custom/os_button"
+    ],
+    "modules-right": [
+        "network#speed",
+        "custom/pipewire",
+        "battery",
+        "tray",
+        "clock"
+    ],
+    "hyprland/language": {
+        "format": "{}",
+        "format-en": "ENG",
+        "format-rime": "中文"
+    },
+    "hyprland/workspaces": {
+        "icon-size": 20,
+        "spacing": 10,
+        "on-scroll-up": "hyprctl dispatch workspace r+1",
+        "on-scroll-down": "hyprctl dispatch workspace r-1"
+    },
+    "custom/os_button": {
+        "format": "",
+        "on-click": "LANG=C rofi -show drun",
+        "tooltip": false
+    },
+    "cpu": {
+        "interval": 5,
+        "format": "CPU {usage}% ",
+        "max-length": 10
+    },
+    "temperature": {
+        "hwmon-path-abs": "/sys/devices/platform/coretemp.0/hwmon",
+        "input-filename": "temp2_input",
+        "critical-threshold": 75,
+        "tooltip": false,
+        "format-critical": "({temperatureC}°C)",
+        "format": "({temperatureC}°C)"
+    },
+    "disk": {
+        "interval": 30,
+        "format": "DISK {percentage_used}% ",
+        "path": "/",
+        "tooltip": true,
+        "unit": "GB",
+        "tooltip-format": "Available {free} of {total}"
+    },
+    "memory": {
+        "interval": 10,
+        "format": "RAM {percentage}% ",
+        "max-length": 10,
+        "tooltip": true,
+        "tooltip-format": "RAM - {used:0.1f}GiB used"
+    },
+    "wlr/taskbar": {
+        "format": "{icon}",
+        "icon-size": 20,
+        "spacing": 3,
+        "tooltip-format": "{title}",
+        "on-click-middle": "close",
+        "on-click": "activate",
+        "all-outputs": false,
+        "active-only": true
+    },
+    "tray": {
+        "icon-size": 15,
+        "spacing": 10,
+        "margin": 10,
+        "show-passive-items": false
+    },
+    "clock": {
+        "format": "{:%R}",
+        "tooltip": true,
+        "tooltip-format": "{:%Y.%m.%d}",
+        "actions": {
+            "on-click-right": "mode"
+        }
+    },
+    "network": {
+        "format-wifi": " {icon}",
+        "format-ethernet": "  ",
+        "format-disconnected": "󰌙",
+        "format-icons": [
+            "󰤯 ",
+            "󰤟 ",
+            "󰤢 ",
+            "󰤢 ",
+            "󰤨 "
+        ]
+    },
+    "network#speed": {
+        "interval": 1,
+        "format": "{ifname}",
+        "format-wifi": "W:  {bandwidthDownBytes}  {bandwidthUpBytes} ",
+        "format-ethernet": "E:  {bandwidthDownBytes}  {bandwidthUpBytes} ",
+        "format-disconnected": "󰌙",
+        "tooltip-format": "{ipaddr}",
+        "format-linked": "󰈁 {ifname} (No IP)",
+        "tooltip-format-wifi": "{essid} {icon} {signalStrength}%",
+        "tooltip-format-ethernet": "{ifname} 󰌘",
+        "tooltip-format-disconnected": "󰌙 Disconnected",
+        "max-length": 30,
+        "format-icons": ["󰤯","󰤟","󰤢","󰤥","󰤨"]
+    },
+    "battery": {
+        "states": {
+            "good": 95,
+            "warning": 30,
+            "critical": 20
+        },
+        "format": " {icon} {capacity}%",
+        "format-charging": "  {capacity}%",
+        "format-plugged": "  {capacity}%",
+        "format-alt": " {time} {icon}",
+        "format-icons": [
+            "󰂎",
+            "󰁺",
+            "󰁻",
+            "󰁼",
+            "󰁽",
+            "󰁾",
+            "󰁿",
+            "󰂀",
+            "󰂁",
+            "󰂂",
+            "󰁹"
+        ]
+    },
+    "custom/pipewire": {
+        "exec": "pw-volume status",
+        "return-type": "json",
+        "interval": "once",
+        "signal": 8,
+        "format": "{icon} {percentage}%",
+        "on-scroll-up": "pw-volume change +5%",
+        "on-scroll-down": "pw-volume change -5%",
+        "on-click": "pw-volume mute toggle",
+        "format-icons": {
+            "mute": " ",
+            "default": [
+                " ",
+                " ",
+                " "
+            ]
+        }
+    }
+}
