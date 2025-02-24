@@ -4,6 +4,7 @@
 
 local option = vim.opt
 
+-- Shell
 option.shell = "/usr/bin/zsh"
 
 -- For Text Edit
@@ -21,3 +22,17 @@ vim.g.neovide_padding_bottom = 10
 
 -- Keep root directory on neo tree
 vim.g.root_spec = { "cwd" }
+
+-- For remote clipboard
+vim.g.clipboard = {
+  name = "xclip",
+  copy = {
+    ["+"] = "xclip -selection clipboard",
+    ["*"] = "xclip -selection clipboard",
+  },
+  paste = {
+    ["+"] = "xclip -selection clipboard -o",
+    ["*"] = "xclip -selection clipboard -o",
+  },
+  cache_enabled = true,
+}
