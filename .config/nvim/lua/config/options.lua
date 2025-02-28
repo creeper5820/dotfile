@@ -24,5 +24,16 @@ vim.g.neovide_padding_bottom = 10
 vim.g.root_spec = { "cwd" }
 
 -- For remote clipboard
+-- vim.g.clipboard = {
+--   name = "xclip",
+--   copy = {
+--     ["+"] = "xclip -selection clipboard",
+--     ["*"] = "xclip -selection primary",
+--   },
+--   paste = {
+--     ["+"] = "xclip -selection clipboard -o",
+--     ["*"] = "xclip -selection primary -o",
+--   },
+--   cache_enabled = true,
+-- }
 option.clipboard = "unnamedplus"
-
