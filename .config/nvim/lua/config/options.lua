@@ -14,13 +14,18 @@ option.shiftwidth = 4
 option.expandtab = true
 option.linespace = 2
 
--- For Ui
+-- For Neovide Ui
 vim.g.neovide_padding_top = 10
 vim.g.neovide_padding_left = 5
 vim.g.neovide_padding_right = 5
 vim.g.neovide_padding_bottom = 10
 
--- Keep root directory on neo tree
+vim.g.neovide_transparency = 0.8
+vim.g.transparency = 0.8
+
+vim.g.neovide_cursor_vfx_mode = "railgun"
+
+-- Keep root directory on neo-tree
 vim.g.root_spec = { "cwd" }
 
 -- For remote clipboard
