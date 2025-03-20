@@ -14,8 +14,8 @@ vim.api.nvim_set_keymap("n", "<CS-j>", "<C-f>", { noremap = true, silent = true 
 vim.api.nvim_set_keymap("n", "<CS-k>", "<C-b>", { noremap = true, silent = true })
 
 -- delete
-vim.api.nvim_set_keymap("i", "<C-BS>", "<C-w>", { noremap = true, silent = true })
-vim.api.nvim_set_keymap("i", "<C-Del>", "<C-o>dw", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("i", "<A-BS>", "<C-w>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("i", "<A-Del>", "<C-o>dw", { noremap = true, silent = true })
 
 -- terminal mode
 vim.api.nvim_set_keymap("t", "jk", "<C-\\><C-n>", { noremap = true })
