@@ -17,10 +17,11 @@ export PATH="$PATH:$HOME/.cargo/bin"
 
 # ZSH
 export ZSH="$HOME/.oh-my-zsh"
+
+plugins=( git extract z )
+
 ZSH_THEME="fwalch"
 
 source $ZSH/oh-my-zsh.sh
 
-plugins=(git extract)
 setopt nonomatch
-
