@@ -1,0 +1,64 @@
+" .ideavimrc is a configuration file for IdeaVim plugin. It uses
+"   the same commands as the original .vimrc configuration.
+" You can find a list of commands here: https://jb.gg/h38q75
+" Find more examples here: https://jb.gg/share-ideavimrc
+
+
+"" -- Suggested options --
+" Show a few lines of context around the cursor. Note that this makes the
+" text scroll if you mouse-click near the start or end of the window.
+set scrolloff=1
+
+" Do incremental searching.
+set incsearch
+
+" Don't use Ex mode, use Q for formatting.
+map Q gq
+
+" --- Enable IdeaVim plugins https://jb.gg/ideavim-plugins
+
+" Highlight copied text
+Plug 'machakann/vim-highlightedyank'
+" Commentary plugin
+Plug 'tpope/vim-commentary'
+
+" saki, move.
+imap <A-h> <Left>
+imap <A-k> <Up>
+imap <A-j> <Down>
+imap <A-l> <Right>
+
+imap <A-L> <C-o>w
+imap <A-H> <C-o>b
+
+" page
+map <C-j> <C-d>
+map <C-k> <C-u>
+map <C-S-j> <C-f>
+map <C-S-k> <C-b>
+
+" delete
+imap <C-BS> <C-w>
+imap <C-Delete> <C-o>dw
+
+" terminal mode, ideaVim does not support terminal mode mappings.
+" terminal mode mappings are omitted.
+
+" open zsh in new terminal tab. This function is not available in ideaVim.
+" this mapping is omitted.
+
+" select all
+nmap <C-a> <Esc>ggVG
+vmap <C-a> <Esc>ggVG
+
+" undo and redo
+nmap <C-z> <Undo>
+imap <C-z> <Undo>
+vmap <C-z> <Undo>
+cmap <C-z> <Undo>
+nmap <C-y> <C-r>
+imap <C-y> <C-r>
+vmap <C-y> <C-r>
+cmap <C-y> <C-r>
+
+imap jk <Esc>
