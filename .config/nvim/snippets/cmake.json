@@ -11,5 +11,12 @@
     "global-search": {
         "prefix": "global-search",
         "body": "file(GLOB_RECURSE ${1:NAME} CONFIGURE_DEPENDS ${2:PATH})"
+    },
+    "cmake-config": {
+        "prefix": "cmake-config",
+        "body": [
+            "cmake_minimum_required(VERSION ${1:VERSION})",
+            "project(${2:NAME})"
+        ]
     }
 }
