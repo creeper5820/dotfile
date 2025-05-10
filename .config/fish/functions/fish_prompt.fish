@@ -1,0 +1,1 @@
+/home/creeper/.local/share/omf/themes/dmorrell/fish_prompt.fish
