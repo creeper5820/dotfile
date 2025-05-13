@@ -5,6 +5,7 @@ return {
       clangd = {
         cmd = {
           "clangd",
+          "--experimental-modules-support",
           "--header-insertion=never",
           "-j=8",
         },
