@@ -143,21 +143,10 @@
         ]
     },
     "custom/pipewire": {
-        "exec": "pw-volume status",
-        "return-type": "json",
-        "interval": "once",
+        "tooltip": false,
+        "max-length": 6,
         "signal": 8,
-        "format": "{icon} {percentage}%",
-        "on-scroll-up": "pw-volume change +5%",
-        "on-scroll-down": "pw-volume change -5%",
-        "on-click": "pw-volume mute toggle",
-        "format-icons": {
-            "mute": " ",
-            "default": [
-                " ",
-                " ",
-                " "
-            ]
-        }
+        "restart-interval": 0,
+        "exec": "$HOME/.config/waybar/scripts/pipewire.sh"
     }
 }
