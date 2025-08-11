@@ -16,4 +16,4 @@ sudo pacman -S --needed --noconfirm \
 
 sudo pacman -S --needed --noconfirm \
     pipewire-pulse polkit-gnome wireplumber wl-clipboard \
-    hyprland hyprpaper
+    hyprland hyprpaper hyprshot
