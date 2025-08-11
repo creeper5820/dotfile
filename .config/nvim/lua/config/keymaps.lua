@@ -33,3 +33,18 @@ vim.keymap.set({ "n", "v" }, "<C-a>", "<Esc>ggVG", { desc = "Select All" })
 -- undo and redo
 vim.keymap.set({ "n", "i", "v", "c" }, "<C-z>", "<Undo>", { desc = "Undo" })
 vim.keymap.set({ "n", "i", "v", "c" }, "<C-y>", "<C-r>", { desc = "Redo" })
+
+-- Jump to the first non-blank character of the current line
+vim.keymap.set("n", "<C-h>", "^", { desc = "Go to line start" })
+-- Jump to the last non-blank character of the current line
+vim.keymap.set("n", "<C-l>", "g_", { desc = "Go to line end" })
+-- Visual mode: jump to line start
+vim.keymap.set("v", "<C-h>", "^", { desc = "Go to line start (visual mode)" })
+-- Visual mode: jump to line end
+vim.keymap.set("v", "<C-l>", "g_", { desc = "Go to line end (visual mode)" })
+
+-- Alt + h/l: switch window left/right
+vim.keymap.set("n", "<A-h>", "<C-w>h", { desc = "Move to left window" })
+vim.keymap.set("n", "<A-l>", "<C-w>l", { desc = "Move to right window" })
+vim.keymap.set("n", "<A-j>", "<C-w>j", { desc = "Move to lower window" })
+vim.keymap.set("n", "<A-k>", "<C-w>k", { desc = "Move to upper window" })
