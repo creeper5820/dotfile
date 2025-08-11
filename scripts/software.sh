@@ -9,7 +9,7 @@ sudo pacman -S --needed --noconfirm \
     wqy-microhei noto-fonts-emoji
 
 sudo pacman -S --needed --noconfirm \
-    neovim neovide fzf unzip git zellij dua-cli
+    neovim neovide fzf ripgrep unzip git zellij dua-cli
 
 sudo pacman -S --needed --noconfirm \
     fish kitty nautilus networkmanager rofi
