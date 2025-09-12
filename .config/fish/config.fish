@@ -15,17 +15,6 @@ if status is-interactive
     alias idf-setup='source /opt/esp-idf/export.sh'
     alias h='hyprland'
     alias c='cargo'
-    alias n='nmcli'
 
-    function rmcs-nvim
-        cd ~/workspace/RMCS/
-        docker-compose start rmcs-develop
-        nohup /bin/bash -c 'docker exec -u developer -d rmcs-develop /opt/nvim-linux-x86_64/bin/nvim --headless --listen localhost:6666 && neovide --server=localhost:6666' >/dev/null 2>&1 &
-    end
-
-    function rmcs-shell
-        cd ~/workspace/RMCS/
-        docker-compose start rmcs-develop
-        docker-compose exec -it rmcs-develop zsh
-    end
+    fish_add_path ~/.local/bin/
 end
