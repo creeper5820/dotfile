@@ -1,6 +1,0 @@
-{
-    "static-cast" : {
-        "prefix": "sc",
-        "body" : "static_cast<${1:TYPE}>"
-    }
-}
