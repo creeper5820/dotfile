@@ -1,0 +1,21 @@
+{
+    "main": {
+        "body": [
+            "auto main() -> int {",
+            "    $0",
+            "    return 0;",
+            "}"
+        ],
+        "description": "C++ main function with auto return type"
+    },
+    "impl": {
+        "body": [
+            "$0",
+            "$1::$1($2) noexcept",
+            "    : pimpl { std::make_unique<Impl>() } { }",
+            "",
+            "$1::~$1() noexcept = default;"
+        ],
+        "description": "Impl mode construct and destory"
+    }
+}
