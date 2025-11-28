@@ -8,6 +8,7 @@
     "passthrough": false,
     "height": 40,
     "modules-left": [
+        "custom/os_button",
         "cpu",
         "memory",
         "disk",
@@ -15,14 +16,13 @@
         "wlr/taskbar"
     ],
     "modules-center": [
-        "custom/os_button"
+        "clock"
     ],
     "modules-right": [
         "network#speed",
-        "custom/pipewire",
+        "pulseaudio",
         "battery",
-        "tray",
-        "clock"
+        "tray"
     ],
     "hyprland/language": {
         "format": "{}",
@@ -37,7 +37,7 @@
     },
     "custom/os_button": {
         "format": "",
-        "on-click": "LANG=C rofi -show drun",
+        "on-click": "kitty -e sh -c 'fastfetch; exec fish'",
         "tooltip": false
     },
     "cpu": {
@@ -85,9 +85,10 @@
         "show-passive-items": false
     },
     "clock": {
-        "format": "{:%R}",
+        "format": "{:%R %Y-%m-%d}",
         "tooltip": true,
         "tooltip-format": "{:%Y.%m.%d}",
+        "on-click": "kitty -e sh -c 'cal -y; exec fish'",
         "actions": {
             "on-click-right": "mode"
         }
@@ -107,8 +108,8 @@
     "network#speed": {
         "interval": 1,
         "format": "{ifname}",
-        "format-wifi": "W:  {bandwidthDownBytes}  {bandwidthUpBytes} ",
-        "format-ethernet": "E:  {bandwidthDownBytes}  {bandwidthUpBytes} ",
+        "format-wifi": "W: {essid}  {bandwidthDownBytes} ",
+        "format-ethernet": "E:  {bandwidthDownBytes} ",
         "format-disconnected": "󰌙",
         "tooltip-format": "{ipaddr}",
         "format-linked": "󰈁 {ifname} (No IP)",
@@ -116,7 +117,13 @@
         "tooltip-format-ethernet": "{ifname} 󰌘",
         "tooltip-format-disconnected": "󰌙 Disconnected",
         "max-length": 30,
-        "format-icons": ["󰤯","󰤟","󰤢","󰤥","󰤨"]
+        "format-icons": [
+            "󰤯",
+            "󰤟",
+            "󰤢",
+            "󰤥",
+            "󰤨"
+        ]
     },
     "battery": {
         "states": {
@@ -148,5 +155,30 @@
         "signal": 8,
         "restart-interval": 0,
         "exec": "$HOME/.config/waybar/scripts/pipewire.sh"
+    },
+    "pulseaudio": {
+        "format": " {icon} {volume}% ",
+        "format-bluetooth": "{icon} {volume}% ",
+        "format-muted": " {icon} mute ",
+        "format-icons": {
+            "alsa_output.pci-0000_00_1f.3.analog-stereo": "",
+            "alsa_output.pci-0000_00_1f.3.analog-stereo-muted": "",
+            "headphone": "",
+            "hands-free": "",
+            "headset": "",
+            "phone": "",
+            "phone-muted": "",
+            "portable": "",
+            "car": "",
+            "default": [
+                "",
+                ""
+            ]
+        },
+        "scroll-step": 1,
+        "on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
+        "ignored-sinks": [
+            "Easy Effects Sink"
+        ]
     }
 }

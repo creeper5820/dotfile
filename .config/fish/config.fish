@@ -23,5 +23,8 @@ if status is-interactive
     alias up='nmcli connect up'
     alias down='nmcli connect down'
 
+    alias rm='echo \"Do not use rm bro, is a unsafe action\" && false'
+    alias ls='eza'
+
     fish_add_path ~/.local/bin/
 end
