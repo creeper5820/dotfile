@@ -16,7 +16,7 @@ vim.api.nvim_set_keymap("t", "jk", "<C-\\><C-n>", { noremap = true })
 vim.keymap.set("i", "jk", "<Esc>", { desc = "退出插入模式 (jk)" })
 
 -- open zsh in new terminal tab
-vim.api.nvim_set_keymap("n", "<Leader>tz", ":terminal zsh<CR>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "<Leader>tf", ":terminal fish<CR>", { noremap = true, silent = true })
 
 -- select all
 vim.keymap.set({ "n", "v" }, "<C-a>", "<Esc>ggVG", { desc = "Select All" })

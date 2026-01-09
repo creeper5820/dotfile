@@ -5,7 +5,7 @@
 local option = vim.opt
 
 -- Shell
-option.shell = "/usr/bin/fish"
+option.shell = "fish"
 
 -- For Text Edit
 option.wrap = true
@@ -30,3 +30,12 @@ vim.g.root_spec = { "cwd" }
 
 -- For remote clipboard
 option.clipboard = "unnamedplus"
+
+-- 退出插入模式将输入法设置为英文
+local ImeAutoGroup = vim.api.nvim_create_augroup("ImeAutoGroup", { clear = true })
+vim.api.nvim_create_autocmd("InsertLeave", {
+  group = ImeAutoGroup,
+  callback = function()
+    vim.fn.system("fcitx5-remote -c")
+  end,
+})
