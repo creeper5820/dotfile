@@ -5,7 +5,7 @@
 local option = vim.opt
 
 -- Shell
-option.shell = "fish"
+option.shell = "zsh"
 
 -- For Text Edit
 option.wrap = true
@@ -15,13 +15,19 @@ option.expandtab = true
 option.linespace = 2
 
 -- For Neovide Ui
-vim.g.neovide_padding_top = 10
-vim.g.neovide_padding_left = 5
-vim.g.neovide_padding_right = 5
-vim.g.neovide_padding_bottom = 10
 
-vim.g.neovide_opacity = 0.95
-vim.g.neovide_normal_opacity = 0.97
+if vim.g.neovide then
+  vim.g.neovide_padding_top = 10
+  vim.g.neovide_padding_left = 5
+  vim.g.neovide_padding_right = 5
+  vim.g.neovide_padding_bottom = 10
+
+  vim.g.neovide_opacity = 0.95
+  vim.g.neovide_normal_opacity = 0.97
+
+  vim.o.guifont = "Maple Mono:h10"
+  vim.o.linespace = 4
+end
 
 vim.g.neovide_cursor_vfx_mode = "railgun"
 
