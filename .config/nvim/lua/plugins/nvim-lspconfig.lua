@@ -5,6 +5,13 @@ return {
       enabled = false,
     },
     servers = {
+
+      lua_ls = {
+        on_attach = function(client)
+          client.server_capabilities.semanticTokensProvider = nil
+        end,
+      },
+
       clangd = {
         keys = {
           { "<leader>ch", "<cmd>ClangdSwitchSourceHeader<cr>", desc = "Switch Source/Header (C/C++)" },
