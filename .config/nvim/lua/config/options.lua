@@ -2,6 +2,9 @@
 -- Default options that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/options.lua
 -- Add any additional options here
 
+-- Spell check: only English, no Chinese
+vim.opt.spelllang = { "en" }
+
 local option = vim.opt
 
 -- Shell
@@ -33,6 +36,9 @@ vim.g.neovide_cursor_vfx_mode = "railgun"
 
 -- Keep root directory on neo-tree
 vim.g.root_spec = { "cwd" }
+
+-- Enable project-local .nvim.lua
+option.exrc = true
 
 -- For remote clipboard
 option.clipboard = "unnamedplus"

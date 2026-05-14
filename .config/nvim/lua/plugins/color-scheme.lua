@@ -23,7 +23,7 @@ _ = kRosePine
 local kTokoyNight = {
   "folke/tokyonight.nvim",
   opts = {
-    style = "day",
+    style = "night",
     styles = {
       comments = { italic = false },
       keywords = { italic = false },

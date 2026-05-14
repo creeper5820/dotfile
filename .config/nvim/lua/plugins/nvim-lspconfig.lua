@@ -35,11 +35,10 @@ return {
         cmd = {
           "clangd",
           "--background-index",
-          "--clang-tidy",
+          -- "--clang-tidy",
           "--header-insertion=never",
           "--completion-style=detailed",
           "--fallback-style=Mozilla",
-          "--compile-commands-dir=build/",
         },
         init_options = {
           usePlaceholders = true,
