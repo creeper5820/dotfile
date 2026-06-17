@@ -9,4 +9,4 @@ SETUVAR __fish_initialized:4300
 SETUVAR _fisher_jethrokuan_2F_z_files:\x7e/\x2econfig/fish/functions/__z\x2efish\x1e\x7e/\x2econfig/fish/functions/__z_add\x2efish\x1e\x7e/\x2econfig/fish/functions/__z_clean\x2efish\x1e\x7e/\x2econfig/fish/functions/__z_complete\x2efish\x1e\x7e/\x2econfig/fish/conf\x2ed/z\x2efish
 SETUVAR _fisher_plugins:jethrokuan/z
 SETUVAR _fisher_upgraded_to_4_4:\x1d
-SETUVAR fish_user_paths:/home/creeper/\x2elocal/bin
+SETUVAR fish_user_paths:/home/creeper/\x2eopencode/bin\x1e/home/creeper/\x2ecargo/bin\x1e/home/creeper/\x2elocal/bin
