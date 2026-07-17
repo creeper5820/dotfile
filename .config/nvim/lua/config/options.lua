@@ -28,7 +28,6 @@ if vim.g.neovide then
   vim.g.neovide_opacity = 0.95
   vim.g.neovide_normal_opacity = 0.97
 
-  vim.o.guifont = "Maple Mono:h10"
   vim.o.linespace = 4
 end
 

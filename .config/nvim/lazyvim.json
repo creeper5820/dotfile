@@ -1,5 +1,6 @@
 {
   "extras": [
+    "lazyvim.plugins.extras.lang.typescript",
     "lazyvim.plugins.extras.lang.typst",
     "lazyvim.plugins.extras.lang.yaml"
   ],

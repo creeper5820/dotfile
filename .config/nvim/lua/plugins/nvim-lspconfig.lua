@@ -27,7 +27,6 @@ return {
           "meson.build",
           "meson_options.txt",
           "build.ninja",
-          ".git",
         },
         capabilities = {
           offsetEncoding = { "utf-16" },
@@ -35,7 +34,6 @@ return {
         cmd = {
           "clangd",
           "--background-index",
-          -- "--clang-tidy",
           "--header-insertion=never",
           "--completion-style=detailed",
           "--fallback-style=Mozilla",
