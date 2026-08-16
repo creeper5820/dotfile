@@ -1,4 +1,4 @@
-local kMainMod = "SUPER" -- Sets "Windows" key as main modifier
+local kMainMod = "SUPER" -- Sets "Cmd" key as main modifier
 
 local kTerminal = "kitty"
 local kFileManager = "nautilus"
@@ -14,8 +14,8 @@ hl.bind(kMainMod .. " + R", hl.dsp.window.pseudo())
 hl.bind(kMainMod .. " + F", hl.dsp.window.float({ action = "toggle" }))
 hl.bind(kMainMod .. " + SHIFT + F", hl.dsp.window.fullscreen())
 
-hl.bind(kMainMod .. " + tab", hl.dsp.focus({ monitor = "+1" }))
-hl.bind(kMainMod .. " + SHIFT + tab", hl.dsp.focus({ monitor = "-1" }))
+hl.bind(kMainMod .. " + TAB", hl.dsp.focus({ monitor = "+1" }))
+hl.bind(kMainMod .. " + SHIFT + TAB", hl.dsp.window.move({ monitor = "+1" }))
 
 -- Move focus with main + arrow keys
 hl.bind(kMainMod .. " + left", hl.dsp.focus({ direction = "left" }))

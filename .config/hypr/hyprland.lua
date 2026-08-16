@@ -49,7 +49,6 @@ hl.env("GBM_BACKEND", "nvidia-drm")
 
 -- FCITX5
 hl.env("QT_IM_MODULE", "fcitx")
-hl.env("GTK_IM_MODULE", "fcitx")
 hl.env("XIM", "fcitx")
 hl.env("XIM_PROGRAM", "fcitx")
 hl.env("XMODIFIERS", "@im=fcitx")
