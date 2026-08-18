@@ -25,3 +25,29 @@ if product == "A7S" then
 
 	hl.workspace_rule({ workspace = "10", monitor = BUILTIN })
 end
+
+if product == "System Product Name" then
+	local DP = "DP-1"
+	local HDMI = "HDMI-A-2"
+
+	hl.monitor({
+		output = DP,
+		mode = "1920x1080@100",
+		position = "0x0",
+		scale = 1,
+		transform = 1,
+	})
+
+	hl.monitor({
+		output = HDMI,
+		mode = "1920x1080@100",
+		position = "1080x320",
+		scale = 1,
+	})
+
+	for i = 2, 10 do
+		hl.workspace_rule({ workspace = tostring(i), monitor = HDMI })
+	end
+
+	hl.workspace_rule({ workspace = "1", monitor = DP })
+end
