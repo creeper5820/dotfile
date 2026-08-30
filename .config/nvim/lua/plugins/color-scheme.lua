@@ -5,7 +5,7 @@ local kEverforest = {
   config = function()
     vim.g.everforest_enable_italic = false
     vim.g.everforest_background = "hard"
-    vim.o.background = "light"
+    vim.o.background = "dark"
     vim.cmd.colorscheme("everforest")
   end,
 }
@@ -34,4 +34,4 @@ local kTokoyNight = {
 }
 _ = kTokoyNight
 
-return kTokoyNight
+return kEverforest
