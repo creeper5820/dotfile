@@ -41,11 +41,8 @@ hl.env("XCURSOR_THEME", "Bibata-Modern-Ice")
 hl.env("XCURSOR_SIZE", "24")
 hl.env("WLR_NO_HARDWARE_CURSORS", "1")
 
--- NVIDIA
-hl.env("LIBVA_DRIVER_NAME", "nvidia")
-hl.env("__GLX_VENDOR_LIBRARY_NAME", "nvidia")
+-- SESSION
 hl.env("XDG_SESSION_TYPE", "wayland")
-hl.env("GBM_BACKEND", "nvidia-drm")
 
 -- FCITX5
 hl.env("QT_IM_MODULE", "fcitx")
@@ -59,11 +56,6 @@ hl.env("SDL_IM_MODULE", "fcitx")
 
 -- ELECTRON APP
 hl.env("ELECTRON_OZONE_PLATFORM_HINT", "auto")
-
--- PROXY
-hl.env("http_proxy", "http://127.0.0.1:7890")
-hl.env("https_proxy", "http://127.0.0.1:7890")
-hl.env("all_proxy", "socks5://127.0.0.1:7890")
 
 -- SCREEN-SHOT
 hl.env("HYPRSHOT_DIR", "/home/creeper/pictures/screenshots")
@@ -230,3 +222,6 @@ hl.window_rule({
 	float = true,
 	center = true,
 })
+
+-- DMS Include Configs
+require("dms.cursor")
