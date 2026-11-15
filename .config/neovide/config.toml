@@ -1,3 +1,12 @@
+startup-message-capture = false
+
 [font]
-size = 10
-normal = ["Maple Mono", "WenQuanYi Micro Hei"]
+size = 9.2
+
+[[font.normal]]
+family = "Maple Mono"
+style = "Normal"
+
+[[font.normal]]
+family = "WenQuanYi Micro Hei"
+style = "Normal"
